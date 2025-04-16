@@ -1,18 +1,18 @@
-# Archivos de entrada
+# selecciona el archivo que sera autocorregido
 nombre_archivo = input("Nombre del archivo de texto a analizar: ")
 archivo_diccionario = "palabras.txt"
 
-# Leer palabras correctas (diccionario)
+# lee las palabras correctas
 with open(archivo_diccionario, "r", encoding="utf-8") as f:
     contenido_diccionario = f.read()
     palabras_correctas = set(contenido_diccionario.lower().split())
 
-# Leer el texto original
+# Lee el texto original 
 with open(archivo_texto, "r", encoding="utf-8") as f:
     contenido_texto = f.read()
     palabras_texto = contenido_texto.lower().split()
 
-# Detectar palabras mal escritas (no están en el diccionario)
+# Detecta las palabras mal escritas  que no están en el diccionario
 mal_escritas = []
 for palabra in palabras_texto:
     # Limpiar signos de puntuación básicos
@@ -20,7 +20,8 @@ for palabra in palabras_texto:
     if palabra_limpia and palabra_limpia not in palabras_correctas:
         mal_escritas.append(palabra)
 
-# Mostrar resultado
+# enviar resultado
+
 if mal_escritas:
     print("Palabras posiblemente mal escritas:")
     for palabra in mal_escritas:
